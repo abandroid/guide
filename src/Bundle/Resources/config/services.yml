@@ -1,0 +1,3 @@
+services:
+    endroid_guide.guide:
+        class: Endroid\Guide\Guide
