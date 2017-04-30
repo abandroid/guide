@@ -10,11 +10,12 @@
 namespace Endroid\Guide;
 
 use Endroid\Guide\Loader\LoaderInterface;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 class Guide
 {
     /**
-     * @var Show[]
+     * @var array
      */
     protected $shows;
 
@@ -24,7 +25,7 @@ class Guide
     protected $loaders;
 
     /**
-     * @param Show[] $shows
+     * @param array $shows
      */
     public function __construct(array $shows = [])
     {
@@ -40,12 +41,17 @@ class Guide
     }
 
     /**
-     * @return Show[]
+     * @return array
      */
     public function load()
     {
-        foreach ($this->shows as $show) {
-            $this->loaders[$show->getType()]->load($show);
+        $stopwatch = new Stopwatch();
+
+        foreach ($this->shows as &$show) {
+            $stopwatch->start($show['label']);
+            $show['results'] = $this->loaders[$show['type']]->load($show);
+            $event = $stopwatch->stop($show['label']);
+            $show['duration'] = $event->getDuration();
         }
 
         return $this->shows;

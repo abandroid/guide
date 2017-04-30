@@ -9,15 +9,13 @@
 
 namespace Endroid\Guide\Loader;
 
-use Endroid\Guide\Show;
-
 interface LoaderInterface
 {
     /**
-     * @param Show $show
+     * @param array $show
      * @return array
      */
-    public function load(Show $show);
+    public function load(array $show);
 
     /**
      * @return string

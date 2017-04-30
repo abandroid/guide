@@ -9,15 +9,13 @@
 
 namespace Endroid\Guide\Loader;
 
-use Endroid\Guide\Show;
-
 class NpoLoader extends AbstractLoader
 {
     /**
      * {@inheritdoc}
      */
-    public function load(Show $show)
+    public function load(array $show)
     {
-
+        return [];
     }
 }

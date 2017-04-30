@@ -7,9 +7,8 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Endroid\Bundle\GuideBundle\DependencyInjection;
+namespace Endroid\Guide\Bundle\DependencyInjection;
 
-use Endroid\Guide\Show;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -29,15 +28,7 @@ class EndroidGuideExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $shows = [];
-        foreach ($config['shows'] as $show) {
-            $shows[] = Show::fromArray($show);
-        }
-
-        dump($shows);
-        die;
-
         $guideDefinition = $container->getDefinition('endroid_guide.guide');
-        $guideDefinition->replaceArgument(0, $shows);
+        $guideDefinition->addArgument($config['shows']);
     }
 }

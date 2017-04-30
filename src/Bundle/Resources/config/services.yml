@@ -1,3 +1,11 @@
 services:
     endroid_guide.guide:
         class: Endroid\Guide\Guide
+    endroid_guide.loader.epguides:
+        class: Endroid\Guide\Loader\EpguidesLoader
+        tags:
+            - { name: endroid_guide.loader }
+    endroid_guide.loader.npo:
+        class: Endroid\Guide\Loader\NpoLoader
+        tags:
+            - { name: endroid_guide.loader }

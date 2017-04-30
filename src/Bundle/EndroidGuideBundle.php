@@ -9,8 +9,19 @@
 
 namespace Endroid\Guide\Bundle;
 
+use Endroid\Guide\Bundle\DependencyInjection\Compiler\LoaderPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class EndroidGuideBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new LoaderPass());
+    }
 }
