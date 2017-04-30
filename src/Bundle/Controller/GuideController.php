@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class GuideController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="endroid_guide_index")
      * @Template()
      *
      * @return array

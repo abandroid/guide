@@ -1,0 +1,9 @@
+endroid_guide:
+    shows:
+        -
+            type: epguides
+            label: Fargo
+            url: http://epguides.com/Fargo/
+        -
+            type: npo
+            label: Klikbeet
