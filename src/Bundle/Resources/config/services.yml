@@ -9,3 +9,7 @@ services:
         class: Endroid\Guide\Loader\NpoLoader
         tags:
             - { name: endroid_guide.loader }
+    endroid_guide.loader.rtl:
+        class: Endroid\Guide\Loader\RtlLoader
+        tags:
+            - { name: endroid_guide.loader }

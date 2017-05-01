@@ -18,7 +18,7 @@ class EpguidesLoader extends AbstractLoader
     /**
      * {@inheritdoc}
      */
-    public function load(array $show)
+    public function load(array &$show)
     {
         $html = file_get_contents($show['url']);
         $crawler = new Crawler($html);
@@ -32,30 +32,16 @@ class EpguidesLoader extends AbstractLoader
         $dateLastWeek->sub(new DateInterval('P7D'));
         $dateNextWeek = clone $currentDate;
         $dateNextWeek->add(new DateInterval('P7D'));
-        $lastDate = new DateTime('1980-01-01');
         for ($i = 0; $i < $matchCount; $i++) {
             $date = DateTime::createFromFormat('d M y H:i', $matches[3][$i].' 23:00');
-            if ($date > $dateNextWeek || $date < $lastDate) {
-                continue;
-            }
             $episodeName = 'S'.str_pad($matches[1][$i], 2, '0', STR_PAD_LEFT).'E'.str_pad($matches[2][$i], 2, '0', STR_PAD_LEFT);
             $result = [
                 'label' => $episodeName.' ('.$date->format('d-m-Y').')',
                 'url' => 'https://thepiratebay.org/search/'.str_replace(' ', '%20', $show['label']).'%20'.$episodeName.'/0/99/0',
-                'color' => 'primary',
+                'date' => $date
             ];
-            if ($date > $dateLastWeek) {
-                $result['color'] = 'success';
-            }
-            if ($date > $currentDate) {
-                $result['color'] = 'warning';
-            }
             $results[] = $result;
-            $lastDate = $date;
         }
-
-        $results = array_reverse($results);
-        $results = array_slice($results, 0, 5);
 
         return $results;
     }

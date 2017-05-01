@@ -15,7 +15,7 @@ interface LoaderInterface
      * @param array $show
      * @return array
      */
-    public function load(array $show);
+    public function load(array &$show);
 
     /**
      * @return string
