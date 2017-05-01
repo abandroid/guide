@@ -3,6 +3,7 @@ services:
         class: Endroid\Guide\Guide
     endroid_guide.loader.epguides:
         class: Endroid\Guide\Loader\EpguidesLoader
+        arguments: [ '@cache.app' ]
         tags:
             - { name: endroid_guide.loader }
     endroid_guide.loader.npo:

@@ -11,15 +11,35 @@ namespace Endroid\Guide\Loader;
 
 use DateInterval;
 use DateTime;
+use Symfony\Component\Cache\Adapter\AbstractAdapter;
 use Symfony\Component\DomCrawler\Crawler;
 
 class EpguidesLoader extends AbstractLoader
 {
     /**
+     * @var AbstractAdapter
+     */
+    protected $cache;
+
+    /**
+     * @param AbstractAdapter $cache
+     */
+    public function __construct(AbstractAdapter $cache)
+    {
+        $this->cache = $cache;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function load(array &$show)
     {
+        $cache = $this->cache->getItem('endroid_guide.epguides.'.$show['label']);
+
+        if ($cache->isHit()) {
+            return $cache->get();
+        }
+
         $html = file_get_contents($show['url']);
         $crawler = new Crawler($html);
         $list = $crawler->filter('#eplist')->text();
@@ -42,6 +62,10 @@ class EpguidesLoader extends AbstractLoader
             ];
             $results[] = $result;
         }
+
+        $cache->set($results);
+        $cache->expiresAfter(7 * 24 * 3600);
+        $this->cache->save($cache);
 
         return $results;
     }
