@@ -7,3 +7,6 @@ endroid_guide:
         -
             type: npo
             label: Klikbeet
+        -
+            type: rtl
+            label: Voetbal Inside
