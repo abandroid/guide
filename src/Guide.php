@@ -65,10 +65,6 @@ class Guide
             return $show2['most_recent']->format('U') - $show1['most_recent']->format('U');
         });
 
-        foreach ($this->shows as &$show) {
-            $show['results'] = array_reverse($show['results']);
-        }
-
         return $this->shows;
     }
 
