@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
+use Symfony\Component\HttpFoundation\Response;
 
 class GuideController extends Controller
 {
@@ -30,6 +31,25 @@ class GuideController extends Controller
         return [
             'shows' => $shows
         ];
+    }
+
+    /**
+     * @Route("/{type}/{label}", name="endroid_guide_show")
+     *
+     * @param string $type
+     * @param string $label
+     * @return Response
+     */
+    public function showAction($type, $label)
+    {
+        $show = [
+            'type' => $type,
+            'label' => $label
+        ];
+
+        $show = $this->getGuide()->loadShow($show);
+
+        return new Response($this->get('templating')->render('EndroidGuideBundle:Guide:index.html.twig', ['shows' => [$show]]));
     }
 
     /**

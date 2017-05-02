@@ -48,17 +48,8 @@ class Guide
      */
     public function load()
     {
-        $stopwatch = new Stopwatch();
-
         foreach ($this->shows as $index => &$show) {
-            if (!isset($this->loaders[$show['type']])) {
-                throw new InvalidLoaderException('No loader available for type '.$show['type']);
-            }
-            $stopwatch->start($index);
-            $show['results'] = $this->processResults($this->loaders[$show['type']]->load($show));
-            $show['most_recent'] = $this->getMostRecent($show['results']);
-            $event = $stopwatch->stop($index);
-            $show['duration'] = $event->getDuration();
+            $show = $this->loadShow($show);
         }
 
         usort($this->shows, function ($show1, $show2) {
@@ -66,6 +57,26 @@ class Guide
         });
 
         return $this->shows;
+    }
+
+    /**
+     * @param array $show
+     * @return array
+     * @throws InvalidLoaderException
+     */
+    public function loadShow(array $show)
+    {
+        if (!isset($this->loaders[$show['type']])) {
+            throw new InvalidLoaderException('No loader available for type '.$show['type']);
+        }
+        $stopwatch = new Stopwatch();
+        $stopwatch->start('show');
+        $show['results'] = $this->processResults($this->loaders[$show['type']]->load($show));
+        $show['most_recent'] = $this->getMostRecent($show['results']);
+        $event = $stopwatch->stop('show');
+        $show['duration'] = $event->getDuration();
+
+        return $show;
     }
 
     /**

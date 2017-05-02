@@ -40,8 +40,11 @@ class EpguidesLoader extends AbstractLoader
             return $cache->get();
         }
 
+        $show['url'] = 'http://epguides.com/'.str_replace(' ', '', $show['label']).'/';
+
         $html = file_get_contents($show['url']);
         $crawler = new Crawler($html);
+
         $list = $crawler->filter('#eplist')->text();
         preg_match_all('#[0-9]+\.\s+([0-9]+)-([0-9]+)\s+([0-9]{2}\s[a-z]{3}\s[0-9]{2})\s+(.*)#i', $list, $matches);
 
