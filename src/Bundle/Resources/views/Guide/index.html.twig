@@ -9,7 +9,9 @@
         <table class="table table-striped table-bordered">
             <tr>
                 <td>
+                    {% if show.url is defined %}<a href="{{ show.url }}" target="_blank">{% endif %}
                     <strong>{{ show.label }} ({{ show.duration }} ms) {% if "guide" in show|keys %}<a href="{{ show.guide }}" target="_blank" style="color: #000;"><span class="glyphicon glyphicon-link"></span></a>{% endif %}</strong>
+                    {% if show.url is defined %}</a>{% endif %}
                 </td>
             </tr>
             <tr>
