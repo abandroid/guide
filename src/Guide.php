@@ -121,7 +121,7 @@ class Guide
     {
         $dateLastMonth = new DateTime('-1 month');
         $dateNextMonth = new DateTime('+1 month');
-        $results = array_filter($results, function($result) use ($dateLastMonth, $dateNextMonth) {
+        $results = array_filter($results, function ($result) use ($dateLastMonth, $dateNextMonth) {
             return $result['date'] > $dateLastMonth && $result['date'] < $dateNextMonth;
         });
     }

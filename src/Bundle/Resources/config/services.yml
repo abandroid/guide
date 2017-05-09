@@ -6,6 +6,10 @@ services:
         arguments: [ '@cache.app' ]
         tags:
             - { name: endroid_guide.loader }
+    endroid_guide.loader.luckytv:
+        class: Endroid\Guide\Loader\LuckyTvLoader
+        tags:
+            - { name: endroid_guide.loader }
     endroid_guide.loader.npo:
         class: Endroid\Guide\Loader\NpoLoader
         tags:

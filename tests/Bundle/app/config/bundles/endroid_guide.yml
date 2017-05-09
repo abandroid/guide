@@ -1,12 +1,14 @@
 endroid_guide:
     shows:
         -
-            type: epguides
             label: Fargo
-            url: http://epguides.com/Fargo/
+            type: epguides
         -
-            type: npo
             label: Klikbeet
+            type: npo
         -
-            type: rtl
             label: Voetbal Inside
+            type: rtl
+        -
+            label: LuckyTV
+            type: luckytv

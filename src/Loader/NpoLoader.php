@@ -51,7 +51,7 @@ class NpoLoader extends AbstractLoader
             ];
         });
 
-        $results = array_filter($results, function($result) {
+        $results = array_filter($results, function ($result) {
             return $result !== null;
         });
 
