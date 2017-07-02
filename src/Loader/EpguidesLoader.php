@@ -11,20 +11,20 @@ namespace Endroid\Guide\Loader;
 
 use DateInterval;
 use DateTime;
-use Symfony\Component\Cache\Adapter\AbstractAdapter;
+use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
 class EpguidesLoader extends AbstractLoader
 {
     /**
-     * @var AbstractAdapter
+     * @var AdapterInterface
      */
     protected $cache;
 
     /**
-     * @param AbstractAdapter $cache
+     * @param AdapterInterface $cache
      */
-    public function __construct(AbstractAdapter $cache)
+    public function __construct(AdapterInterface $cache)
     {
         $this->cache = $cache;
     }
