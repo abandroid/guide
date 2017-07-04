@@ -19,6 +19,8 @@ class NpoLoader extends AbstractLoader
      */
     public function load(array &$show)
     {
+        return [];
+
         $url = 'https://www.npo.nl/suggesties?q='.strtolower(str_replace(' ', '+', $show['label']));
 
         $abstract = json_decode(file_get_contents($url))[0];
