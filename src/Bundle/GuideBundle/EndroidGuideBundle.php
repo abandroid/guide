@@ -7,9 +7,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Endroid\Guide\Bundle;
+namespace Endroid\Guide\Bundle\GuideBundle;
 
-use Endroid\Guide\Bundle\DependencyInjection\Compiler\LoaderPass;
+use Endroid\Guide\Bundle\GuideBundle\DependencyInjection\Compiler\LoaderPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

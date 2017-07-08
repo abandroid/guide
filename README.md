@@ -30,7 +30,7 @@ public function registerBundles()
 {
     $bundles = [
         // ...
-        new Endroid\Guide\Bundle\EndroidGuideBundle(),
+        new Endroid\Guide\Bundle\GuideBundle\EndroidGuideBundle(),
     ];
 }
 ```

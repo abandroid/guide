@@ -7,7 +7,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Endroid\Guide\Bundle\Controller;
+namespace Endroid\Guide\Bundle\GuideBundle\Controller;
 
 use Endroid\Guide\Guide;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
