@@ -25,7 +25,13 @@ class RtlLoader extends AbstractLoader
 
         $url = 'https://search.rtl.nl/?search='.strtolower(str_replace(' ', '%20', $show['label'])).'&page=1&pageSize=12&typeRestriction=tvabstract';
         $response = json_decode(file_get_contents($url));
+
         $abstract = $response->Abstracts[0];
+        foreach ($response->Abstracts as $abstract) {
+            if ($abstract->Title == $show['label']) {
+                break;
+            }
+        }
 
         $show['label'] = $abstract->Title;
 
