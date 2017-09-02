@@ -10,12 +10,13 @@
 namespace Endroid\Guide\Bundle\GuideBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
 
-class EndroidGuideExtension extends Extension
+class EndroidGuideExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
@@ -30,5 +31,22 @@ class EndroidGuideExtension extends Extension
 
         $guideDefinition = $container->getDefinition('endroid_guide.guide');
         $guideDefinition->addArgument($config['shows']);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prepend(ContainerBuilder $container)
+    {
+        // Add the package to the assets configuration so the correct manifest is used
+        $container->prependExtensionConfig('framework', [
+            'assets' => [
+                'packages' => [
+                    'endroid_guide' => [
+                        'json_manifest_path' => '%kernel.project_dir%/public/bundles/endroidguide/build/manifest.json'
+                    ]
+                ]
+            ]
+        ]);
     }
 }
