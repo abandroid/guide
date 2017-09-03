@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class GuideController extends Controller
+class DashboardController extends Controller
 {
     /**
      * @Route("/", name="endroid_guide_index")

@@ -15,7 +15,7 @@
     "superagent": "^3.5.2"
   },
   "scripts": {
-    "test": "echo \"No tests specified\" && exit 1"
+    "build": "node_modules/.bin/encore production"
   },
   "author": "Jeroen van den Enden",
   "license": "MIT"

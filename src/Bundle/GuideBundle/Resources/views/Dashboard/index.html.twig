@@ -34,3 +34,8 @@
     {% endfor %}
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ preload(asset('/build/dashboard.js', 'endroid_guide')) }}"></script>
+{% endblock %}
