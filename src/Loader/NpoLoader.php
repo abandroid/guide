@@ -19,24 +19,22 @@ class NpoLoader extends AbstractLoader
      */
     public function load(array &$show)
     {
-        return [];
+        $url = 'https://www.npo.nl/search?query='.strtolower(str_replace(' ', '+', $show['label']));
 
-        $url = 'https://www.npo.nl/suggesties?q='.strtolower(str_replace(' ', '+', $show['label']));
+        $context = stream_context_create(['http' => ['header' => 'X-Requested-With: XMLHttpRequest']]);
+        $response = file_get_contents($url, false, $context);
 
-        $abstract = json_decode(file_get_contents($url))[0];
+        $crawler = new Crawler($response);
+        $node = $crawler->filter('.npo-tile-link')->first();
 
-        $show['url'] = $abstract->url;
-        $show['label'] = $abstract->titleMain;
+        $show['url'] = $node->attr('href');
+        $show['label'] = $node->attr('title');
 
-        $html = file_get_contents($abstract->url.'/search');
+        $html = file_get_contents($show['url']);
         $crawler = new Crawler($html);
 
-        $results = $crawler->filter('.row-fluid .image-container a, .row-fluid .image a')->each(function ($node) use ($abstract) {
-            $url = 'http://www.npo.nl'.$node->attr('href');
-
-            if (strpos($url, 'POMS_NTR_') !== false) {
-                return null;
-            }
+        $results = $crawler->filter('#component-grid-episodes .npo-tile-link')->each(function ($node) {
+            $url = $node->attr('href');
 
             preg_match_all('#[0-9]{2}-[0-9]{2}-[0-9]{4}#', $url, $matches);
 
