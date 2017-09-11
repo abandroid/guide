@@ -53,7 +53,14 @@ class Guide
         }
 
         usort($this->shows, function ($show1, $show2) {
-            return $show2['most_recent']->format('U') - $show1['most_recent']->format('U');
+            $showDate1 = $show1['most_recent']->format('U');
+            $showDate2 = $show2['most_recent']->format('U');
+
+            if ($showDate1 === $showDate2) {
+                return count($show2['results']) - count($show1['results']);
+            }
+
+            return $showDate2 - $showDate1;
         });
 
         return $this->shows;
