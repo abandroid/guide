@@ -49,7 +49,7 @@ class DashboardController extends Controller
 
         $show = $this->getGuide()->loadShow($show);
 
-        return new Response($this->get('templating')->render('EndroidGuideBundle:Guide:index.html.twig', ['shows' => [$show]]));
+        return new Response($this->get('templating')->render('EndroidGuideBundle:Dashboard:index.html.twig', ['shows' => [$show]]));
     }
 
     /**
