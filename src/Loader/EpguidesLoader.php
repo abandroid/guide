@@ -55,13 +55,13 @@ class EpguidesLoader extends AbstractLoader
         $dateLastWeek->sub(new DateInterval('P7D'));
         $dateNextWeek = clone $currentDate;
         $dateNextWeek->add(new DateInterval('P7D'));
-        for ($i = 0; $i < $matchCount; $i++) {
+        for ($i = 0; $i < $matchCount; ++$i) {
             $date = DateTime::createFromFormat('d M y H:i', $matches[3][$i].' 23:00');
             $episodeName = 'S'.str_pad($matches[1][$i], 2, '0', STR_PAD_LEFT).'E'.str_pad($matches[2][$i], 2, '0', STR_PAD_LEFT);
             $result = [
                 'label' => $episodeName.' ('.$date->format('d-m-Y').')',
                 'url' => 'https://thepiratebay.org/search/'.str_replace(' ', '%20', $show['label']).'%20'.$episodeName.'/0/99/0',
-                'date' => $date
+                'date' => $date,
             ];
             $results[] = $result;
         }

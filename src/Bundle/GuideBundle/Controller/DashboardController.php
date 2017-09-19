@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $shows = $this->getGuide()->load();
 
         return [
-            'shows' => $shows
+            'shows' => $shows,
         ];
     }
 
@@ -37,13 +37,14 @@ class DashboardController extends Controller
      *
      * @param string $type
      * @param string $label
+     *
      * @return Response
      */
     public function showAction($type, $label)
     {
         $show = [
             'type' => $type,
-            'label' => $label
+            'label' => $label,
         ];
 
         $show = $this->getGuide()->loadShow($show);
@@ -63,12 +64,12 @@ class DashboardController extends Controller
 
         foreach ($shows as &$show) {
             foreach ($show['results'] as &$result) {
-                $result['guid'] = hash('sha256', $show['label'] . $result['label']);
+                $result['guid'] = hash('sha256', $show['label'].$result['label']);
             }
         }
 
         return [
-            'shows' => $shows
+            'shows' => $shows,
         ];
     }
 

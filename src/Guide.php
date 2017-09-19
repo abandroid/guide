@@ -44,6 +44,7 @@ class Guide
 
     /**
      * @return array
+     *
      * @throws InvalidLoaderException
      */
     public function load()
@@ -68,7 +69,9 @@ class Guide
 
     /**
      * @param array $show
+     *
      * @return array
+     *
      * @throws InvalidLoaderException
      */
     public function loadShow(array $show)
@@ -88,6 +91,7 @@ class Guide
 
     /**
      * @param array $results
+     *
      * @return array
      */
     protected function processResults(array $results)
@@ -135,6 +139,7 @@ class Guide
 
     /**
      * @param array $results
+     *
      * @return DateTime
      */
     protected function getMostRecent(array $results)

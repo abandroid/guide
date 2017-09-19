@@ -29,7 +29,7 @@ class LuckyTvLoader extends AbstractLoader
         'sep' => '09',
         'okt' => '10',
         'nov' => '11',
-        'dec' => '12'
+        'dec' => '12',
     ];
 
     /**

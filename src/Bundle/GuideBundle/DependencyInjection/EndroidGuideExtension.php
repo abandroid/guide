@@ -43,10 +43,10 @@ class EndroidGuideExtension extends Extension implements PrependExtensionInterfa
             'assets' => [
                 'packages' => [
                     'endroid_guide' => [
-                        'json_manifest_path' => '%kernel.project_dir%/public/bundles/endroidguide/build/manifest.json'
-                    ]
-                ]
-            ]
+                        'json_manifest_path' => '%kernel.project_dir%/public/bundles/endroidguide/build/manifest.json',
+                    ],
+                ],
+            ],
         ]);
     }
 }

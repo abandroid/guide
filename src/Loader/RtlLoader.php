@@ -44,7 +44,7 @@ class RtlLoader extends AbstractLoader
             $results[] = [
                 'label' => $date->format('d-m-Y'),
                 'url' => $this->replace($show['url'], $episode),
-                'date' => $date
+                'date' => $date,
             ];
         }
 
@@ -52,8 +52,9 @@ class RtlLoader extends AbstractLoader
     }
 
     /**
-     * @param string $url
+     * @param string   $url
      * @param stdClass $episode
+     *
      * @return string
      */
     protected function replace($url, $episode)
@@ -67,7 +68,7 @@ class RtlLoader extends AbstractLoader
             $episode->uuid,
             substr($episode->abstract_key, 0, 2),
             $episode->abstract_key,
-            $episode->season_key
+            $episode->season_key,
         ], $url);
 
         return $url;
