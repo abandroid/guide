@@ -16,7 +16,8 @@
         "php": ">=5.6",
         "ext-gd": "*",
         "symfony/options-resolver": ">=2.7",
-        "symfony/cache": ">=2.7"
+        "symfony/cache": ">=2.7",
+        "symfony/dom-crawler": "^3.0|^4.0"
     },
     "require-dev": {
         "symfony/asset": ">=2.7",
