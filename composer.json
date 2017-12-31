@@ -2,7 +2,7 @@
     "name": "endroid/guide",
     "description": "Endroid Guide",
     "keywords": ["endroid", "guide", "bundle", "symfony"],
-    "homepage": "https://github.com/endroid/Guide",
+    "homepage": "https://github.com/endroid/guide",
     "type": "library",
     "license": "MIT",
     "authors": [
