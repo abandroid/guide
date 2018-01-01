@@ -3,7 +3,7 @@
 *By [endroid](https://endroid.nl/)*
 
 [![Latest Stable Version](http://img.shields.io/packagist/v/endroid/guide.svg)](https://packagist.org/packages/endroid/guide)
-[![Build Status](http://img.shields.io/travis/endroid/Guide.svg)](http://travis-ci.org/endroid/Guide)
+[![Build Status](http://img.shields.io/travis/endroid/guide.svg)](http://travis-ci.org/endroid/guide)
 [![Total Downloads](http://img.shields.io/packagist/dt/endroid/guide.svg)](https://packagist.org/packages/endroid/guide)
 [![Monthly Downloads](http://img.shields.io/packagist/dm/endroid/guide.svg)](https://packagist.org/packages/endroid/guide)
 [![License](http://img.shields.io/packagist/l/endroid/guide.svg)](https://packagist.org/packages/endroid/guide)
