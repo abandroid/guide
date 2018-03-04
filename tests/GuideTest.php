@@ -9,12 +9,22 @@
 
 namespace Endroid\Guide\Tests;
 
+use Endroid\Guide\Exception\InvalidLoaderException;
+use Endroid\Guide\Guide;
 use PHPUnit\Framework\TestCase;
 
 class GuideTest extends TestCase
 {
-    public function testNoTestsYet()
+    public function testInvalidLoader()
     {
-        $this->assertTrue(true);
+        $guide = new Guide([
+            [
+                'type' => 'invalid'
+            ]
+        ]);
+
+        $this->expectException(InvalidLoaderException::class);
+
+        $guide->load();
     }
 }
