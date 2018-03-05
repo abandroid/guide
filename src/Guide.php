@@ -16,38 +16,27 @@ use Symfony\Component\Stopwatch\Stopwatch;
 
 class Guide
 {
-    /**
-     * @var array
-     */
-    protected $shows;
+    private $shows;
+    private $loaders;
 
-    /**
-     * @var LoaderInterface[]
-     */
-    protected $loaders;
-
-    /**
-     * @param array $shows
-     */
     public function __construct(array $shows = [])
     {
         $this->shows = $shows;
     }
 
-    /**
-     * @param LoaderInterface $loader
-     */
-    public function registerLoader(LoaderInterface $loader)
+    public function addLoaders(iterable $loaders): void
+    {
+        foreach ($loaders as $loader) {
+            $this->addLoader($loader);
+        }
+    }
+
+    public function addLoader(LoaderInterface $loader): void
     {
         $this->loaders[$loader->getName()] = $loader;
     }
 
-    /**
-     * @return array
-     *
-     * @throws InvalidLoaderException
-     */
-    public function load()
+    public function load(): array
     {
         foreach ($this->shows as $index => &$show) {
             $show = $this->loadShow($show);
@@ -67,14 +56,7 @@ class Guide
         return $this->shows;
     }
 
-    /**
-     * @param array $show
-     *
-     * @return array
-     *
-     * @throws InvalidLoaderException
-     */
-    public function loadShow(array $show)
+    public function loadShow(array $show): array
     {
         if (!isset($this->loaders[$show['type']])) {
             throw new InvalidLoaderException('No loader available for type '.$show['type']);
@@ -89,12 +71,7 @@ class Guide
         return $show;
     }
 
-    /**
-     * @param array $results
-     *
-     * @return array
-     */
-    protected function processResults(array $results)
+    private function processResults(array $results): array
     {
         $this->sortResults($results);
         $this->filterResults($results);
@@ -103,20 +80,14 @@ class Guide
         return $results;
     }
 
-    /**
-     * @param array $results
-     */
-    protected function sortResults(array &$results)
+    private function sortResults(array &$results): void
     {
         usort($results, function ($result1, $result2) {
             return $result2['date']->format('U') - $result1['date']->format('U');
         });
     }
 
-    /**
-     * @param array $results
-     */
-    protected function colorResults(array &$results)
+    private function colorResults(array &$results): void
     {
         $dateToday = new DateTime();
         $dateLastWeek = new DateTime('-1 week');
@@ -125,10 +96,7 @@ class Guide
         }
     }
 
-    /**
-     * @param array $results
-     */
-    protected function filterResults(array &$results)
+    private function filterResults(array &$results): void
     {
         $dateLastMonth = new DateTime('-1 month');
         $dateNextMonth = new DateTime('+1 month');
@@ -137,12 +105,7 @@ class Guide
         });
     }
 
-    /**
-     * @param array $results
-     *
-     * @return DateTime
-     */
-    protected function getMostRecent(array $results)
+    private function getMostRecent(array $results): DateTime
     {
         $mostRecent = new DateTime('-2 year');
         $currentDate = new DateTime();

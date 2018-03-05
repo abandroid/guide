@@ -14,10 +14,7 @@ use stdClass;
 
 class RtlLoader extends AbstractLoader
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function load(array &$show)
+    public function load(array &$show): array
     {
         if (!isset($show['url'])) {
             $show['url'] = 'http://pg.us.rtl.nl/rtlxl/network/a3m/progressive/components/videorecorder/{short_abstract_key}/{abstract_key}/{season_key}/{uuid}.ssm/{uuid}.mp4';

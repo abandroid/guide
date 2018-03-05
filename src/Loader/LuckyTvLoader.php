@@ -14,9 +14,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class LuckyTvLoader extends AbstractLoader
 {
-    /**
-     * @var array
-     */
     protected $months = [
         'jan' => '01',
         'feb' => '02',
@@ -32,10 +29,7 @@ class LuckyTvLoader extends AbstractLoader
         'dec' => '12',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
-    public function load(array &$show)
+    public function load(array &$show): array
     {
         $html = file_get_contents('http://www.luckytv.nl/afleveringen/');
 

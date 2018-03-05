@@ -11,15 +11,7 @@ namespace Endroid\Guide\Loader;
 
 interface LoaderInterface
 {
-    /**
-     * @param array $show
-     *
-     * @return array
-     */
-    public function load(array &$show);
+    public function load(array &$show): array;
 
-    /**
-     * @return string
-     */
     public function getName();
 }

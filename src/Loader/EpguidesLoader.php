@@ -16,23 +16,14 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class EpguidesLoader extends AbstractLoader
 {
-    /**
-     * @var AdapterInterface
-     */
     protected $cache;
 
-    /**
-     * @param AdapterInterface $cache
-     */
     public function __construct(AdapterInterface $cache)
     {
         $this->cache = $cache;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function load(array &$show)
+    public function load(array &$show): array
     {
         $cache = $this->cache->getItem('endroid_guide.epguides.'.$show['label']);
 

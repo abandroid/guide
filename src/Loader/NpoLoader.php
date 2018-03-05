@@ -14,10 +14,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class NpoLoader extends AbstractLoader
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function load(array &$show)
+    public function load(array &$show): array
     {
         $url = 'https://www.npo.nl/search?query='.strtolower(str_replace(' ', '+', $show['label']));
 

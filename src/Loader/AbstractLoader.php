@@ -13,10 +13,7 @@ use ReflectionClass;
 
 abstract class AbstractLoader implements LoaderInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         $reflectionClass = new ReflectionClass($this);
         $name = strtolower(str_replace('Loader', '', $reflectionClass->getShortName()));
