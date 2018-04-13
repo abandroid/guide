@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.1",
         "ext-gd": "*",
-        "endroid/installer": "^1.0",
+        "endroid/installer": "^1.0.3",
         "symfony/cache": "^3.0|^4.0",
         "symfony/css-selector": "^3.0|^4.0",
         "symfony/dom-crawler": "^3.0|^4.0",
