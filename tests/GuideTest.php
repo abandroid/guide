@@ -19,8 +19,8 @@ class GuideTest extends TestCase
     {
         $guide = new Guide([
             [
-                'type' => 'invalid'
-            ]
+                'type' => 'invalid',
+            ],
         ]);
 
         $this->expectException(InvalidLoaderException::class);
