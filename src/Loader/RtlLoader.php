@@ -39,7 +39,7 @@ class RtlLoader extends AbstractLoader
 
         $results = [];
         foreach ($response->material as $episode) {
-            $date = DateTime::createFromFormat('U', $episode->display_date);
+            $date = DateTime::createFromFormat('U', (string) $episode->display_date);
             $results[] = [
                 'label' => $date->format('d-m-Y'),
                 'url' => $this->replace($show['url'], $episode),
