@@ -46,8 +46,8 @@ endroid_guide:
             url: http://epguides.com/Fargo/
         -
             type: epguides
-            label: Better Call Saul
-            url: http://epguides.com/BetterCallSaul/
+            label: Homeland
+            url: http://epguides.com/Homeland/
         -
             type: npo
             label: Zondag met Lubach
@@ -56,10 +56,9 @@ endroid_guide:
 Add the following section to your routing to be able to visit the guide.
 
 ``` yml
-EndroidGuideBundle:
-    resource: "@EndroidGuideBundle/Controller/"
-    type:     annotation
-    prefix:   /guide
+endroid_guide:
+    resource: "@EndroidGuideBundle/Resources/config/routes.yaml"
+    prefix: /guide
 ```
 
 ## Versioning
