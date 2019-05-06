@@ -43,14 +43,9 @@ endroid_guide:
         -
             type: epguides
             label: Fargo
-            url: http://epguides.com/Fargo/
         -
             type: epguides
             label: Homeland
-            url: http://epguides.com/Homeland/
-        -
-            type: npo
-            label: Zondag met Lubach
 ```
 
 Add the following section to your routing to be able to visit the guide.
